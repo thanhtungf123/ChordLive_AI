@@ -1,0 +1,7 @@
+venv/
+__pycache__/
+*.exe
+*.wav
+*.mp3
+separated/
+.env

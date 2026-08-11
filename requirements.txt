@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+yt-dlp
+librosa
+openai-whisper
+google-generativeai
+python-multipart
