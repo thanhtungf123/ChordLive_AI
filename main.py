@@ -14,7 +14,7 @@ from fastapi import FastAPI, HTTPException
 app = FastAPI(title="ChordLive AI Audio Service")
 
 class ChatRequest(BaseModel):
-    message: str
+    messages: list[dict]
     youtube_url: str | None = None
 
 @app.post("/api/analyze")
@@ -23,7 +23,7 @@ async def analyze_audio(request: ChatRequest):
     
     if not request.youtube_url:
         # Handle normal text chat without audio
-        return {"response": generate_text_response(request.message)}
+        return {"response": generate_text_response(request.messages)}
     
     try:
         from audio_processor import download_audio, extract_lyrics, extract_chords
@@ -58,7 +58,7 @@ async def analyze_audio(request: ChatRequest):
             
         # 4. Synthesize response using Gemini
         from gemini_client import generate_ai_response
-        final_text = generate_ai_response(request.message, title, author, lyrics_timeline, chords_timeline)
+        final_text = generate_ai_response(request.messages, title, author, lyrics_timeline, chords_timeline)
         
         return {
             "response": final_text
