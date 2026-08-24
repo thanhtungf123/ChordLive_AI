@@ -13,7 +13,7 @@ def generate_ai_response_with_audio(messages: list, title: str, author: str, aud
     
     # Use Gemini 1.5 Flash which has native multimodal audio support
     model = genai.GenerativeModel(
-        'gemini-1.5-flash',
+        'gemini-3.6-flash',
         system_instruction=f"""
 Bạn là ChordLive AI, chuyên gia âm nhạc siêu đẳng. 
 Thông tin bài hát:
@@ -64,7 +64,7 @@ def generate_text_response(messages: list) -> str:
     
     genai.configure(api_key=api_key)
     model = genai.GenerativeModel(
-        'gemini-1.5-flash',
+        'gemini-3.6-flash',
         system_instruction="Bạn là ChordLive AI, chuyên gia âm nhạc. Bạn luôn trả lời thân thiện, hữu ích."
     )
     
