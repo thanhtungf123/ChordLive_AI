@@ -4,8 +4,6 @@ import uvicorn
 import os
 import sys
 
-from dotenv import load_dotenv
-load_dotenv(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../backend/.env'), override=True)
 
 app = FastAPI(title="ChordLive AI Audio Service")
 
